@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Category;
+use App\Models\Task;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +44,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /* esta funcao e nomeada no plural por segue um comportamento hasMany (ou seja, para muitos) ja que um usuario pode criar varias tarefas */
+    public function tasks() {
+        return $this->hasMany(Task::class);
+    }
+
+    public function categories() {
+        return $this->hasMany(Category::class);
+    }
 }
