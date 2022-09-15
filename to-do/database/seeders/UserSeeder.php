@@ -25,5 +25,7 @@ class UserSeeder extends Seeder
             'email' => 'eusereirco@comcerteza.com',
             'password' => Hash::make('123456')
         ]);
+
+
     }
 }
