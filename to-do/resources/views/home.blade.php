@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:btn>
-        <a href="" class="btn btn-primary">
+        <a href="{{route('task.create')}}" class="btn btn-primary">
             Criar tarefa
         </a>
     </x-slot:btn>
@@ -33,33 +33,9 @@
             </select>
         </div>
         <div class="task_list">
-            @php
-                $tasks = [
-                    [
-                        'id' => 0,
-                        'done' => true,
-                        'title' => 'Minha Primeira Task',
-                        'category' => 'Categoria 1'
-                    ],
-
-                    [
-                        'id' => 1,
-                        'done' => false,
-                        'title' => 'Minha Segunda Task',
-                        'category' => 'Categoria 2'
-                    ],
-
-                    [
-                        'id' => 2,
-                        'done' => true,
-                        'title' => 'Minha Terceira Task',
-                        'category' => 'Categoria 1'
-                    ],
-                ]
-            @endphp
-            <x-task :data=$tasks[0]/>
-            <x-task :data=$tasks[1]/>
-            <x-task :data=$tasks[2]/>
+            @foreach ($tasks as $task )
+            <x-task :data=$task/>
+            @endforeach
         </div>
     </section>
 </x-layout>

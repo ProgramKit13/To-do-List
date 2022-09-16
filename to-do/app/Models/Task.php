@@ -13,6 +13,7 @@ class Task extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'is_done',
         'title',
         'description',
         'due_date',
@@ -24,7 +25,7 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function cateogory() {
+    public function category() {
         return $this->belongsTo(Category::class);
     }
 }
